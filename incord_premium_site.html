@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Incord, Ltd. | Independent Music Label</title>
+  <meta name="description" content="Incord, Ltd. is a modern independent music label focused on artist development, digital distribution, and premium global releases." />
+  <meta name="theme-color" content="#050505" />
+  <style>
+    :root {
+      --bg: #050505;
+      --bg-soft: #0a0a0a;
+      --panel: rgba(255,255,255,0.05);
+      --panel-strong: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.12);
+      --border-soft: rgba(255,255,255,0.08);
+      --text: #ffffff;
+      --muted: rgba(255,255,255,0.68);
+      --muted-2: rgba(255,255,255,0.45);
+      --shadow: 0 20px 60px rgba(0,0,0,0.45);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 18px;
+      --max: 1180px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 32%),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05), transparent 24%),
+        linear-gradient(180deg, #040404 0%, #090909 48%, #040404 100%);
+      color: var(--text);
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: radial-gradient(circle at center, black 48%, transparent 95%);
+      opacity: 0.35;
+      z-index: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .glass {
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.035));
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.86);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .badge::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 20px rgba(255,255,255,0.75);
+    }
+
+    .section {
+      padding: 34px 0 0;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding-top: 18px;
+    }
+
+    .nav-shell {
+      border-radius: 999px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: fit-content;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05));
+      border: 1px solid rgba(255,255,255,0.16);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .brand-text strong {
+      font-size: 14px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .brand-text span {
+      font-size: 11px;
+      color: var(--muted-2);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    nav a:hover,
+    .footer-links a:hover,
+    .social-row a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .hero {
+      padding: 34px 0 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-panel,
+    .card,
+    .stat-card,
+    .footer-panel {
+      border-radius: var(--radius-xl);
+    }
+
+    .hero-copy {
+      position: relative;
+      overflow: hidden;
+      padding: 32px;
+      min-height: 620px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero-copy::before {
+      content: "";
+      position: absolute;
+      inset: auto -10% -28% auto;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.14), transparent 68%);
+      filter: blur(12px);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      color: rgba(255,255,255,0.72);
+      font-size: 13px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      margin-top: 18px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(48px, 8vw, 92px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 780px;
+      text-wrap: balance;
+    }
+
+    .hero-desc {
+      max-width: 620px;
+      font-size: 17px;
+      color: var(--muted);
+      margin-top: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      padding: 15px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.13);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 14px;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.3);
+    }
+
+    .btn-primary {
+      background: #fff;
+      color: #050505;
+      font-weight: 700;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+    }
+
+    .hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .mini-note {
+      max-width: 420px;
+      color: var(--muted-2);
+      font-size: 13px;
+    }
+
+    .hero-panel {
+      padding: 18px;
+      display: grid;
+      grid-template-rows: 1.2fr auto;
+      gap: 18px;
+      min-height: 620px;
+    }
+
+    .showcase {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.03)),
+        linear-gradient(135deg, #111 0%, #050505 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      min-height: 380px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .showcase::after {
+      content: "";
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      right: -40px;
+      top: -30px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 70%);
+      filter: blur(6px);
+    }
+
+    .showcase-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .showcase-title small,
+    .meta-kicker,
+    .section-kicker {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 11px;
+      color: var(--muted-2);
+    }
+
+    .showcase-title h2 {
+      font-size: 30px;
+      line-height: 1.05;
+      margin-top: 10px;
+      max-width: 250px;
+      letter-spacing: -0.04em;
+    }
+
+    .showcase-chip {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05);
+      font-size: 12px;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .vinyl-area {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      min-height: 210px;
+      margin: 8px 0 0;
+    }
+
+    .record {
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at center, #0b0b0b 0 15%, #2b2b2b 15.2% 18%, #050505 18.2% 24%, #1a1a1a 24.2% 26.5%, #060606 26.7% 37%, #191919 37.2% 38.6%, #050505 38.8% 100%);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5), inset 0 0 80px rgba(255,255,255,0.04);
+      position: relative;
+    }
+
+    .record::before {
+      content: "";
+      position: absolute;
+      inset: 50%;
+      width: 48px;
+      height: 48px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: linear-gradient(180deg, #f4f4f4, #bbb);
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .record::after {
+      content: "INC";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      color: #050505;
+      z-index: 1;
+    }
+
+    .release-meta {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .meta-box {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .meta-box strong {
+      display: block;
+      font-size: 15px;
+      margin-top: 6px;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .stat-card {
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .stat-card .meta-kicker {
+      margin-bottom: 10px;
+    }
+
+    .stat-card strong {
+      font-size: 28px;
+      letter-spacing: -0.04em;
+    }
+
+    .stat-card p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin-bottom: 20px;
+      padding-top: 18px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      margin-top: 10px;
+    }
+
+    .section-head p {
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .cards-3,
+    .cards-2,
+    .footer-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .cards-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .cards-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+      min-height: 240px;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), transparent 60%);
+      pointer-events: none;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 14px;
+      margin-bottom: 42px;
+    }
+
+    .index-chip {
+      min-width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.8);
+      font-size: 13px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .card h3 {
+      font-size: 26px;
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      max-width: 300px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 360px;
+    }
+
+    .artist-card {
+      min-height: 290px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .artist-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.04));
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+    }
+
+    .artist-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      color: rgba(255,255,255,0.74);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .pill {
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.09);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .release-card {
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .release-card h3 {
+      max-width: 260px;
+    }
+
+    .release-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .release-bottom span,
+    .contact-line,
+    .demo-info p,
+    .footer-note {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .arrow-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: white;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+    }
+
+    .list-panel {
+      padding: 24px;
+      border-radius: var(--radius-xl);
+    }
+
+    .timeline {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .timeline li {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 14px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .timeline li:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .step {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .timeline strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .timeline p {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 520px;
+    }
+
+    .demo-box {
+      padding: 24px;
+      border-radius: var(--radius-xl);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100%;
+    }
+
+    .demo-box h3 {
+      font-size: 28px;
+      line-height: 1.03;
+      letter-spacing: -0.04em;
+      max-width: 280px;
+      margin-top: 12px;
+    }
+
+    .demo-info {
+      display: grid;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .demo-item {
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.035);
+    }
+
+    .demo-item strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 6px;
+      color: rgba(255,255,255,0.86);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .footer-wrap {
+      padding: 20px 0 40px;
+    }
+
+    .footer-panel {
+      padding: 24px;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1.1fr 0.9fr 0.9fr;
+      align-items: start;
+    }
+
+    .footer-panel h3 {
+      font-size: 24px;
+      letter-spacing: -0.04em;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .footer-links,
+    .social-row {
+      display: grid;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .social-row {
+      gap: 14px;
+    }
+
+    .copyright {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 24px;
+      margin-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted-2);
+      font-size: 13px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .process-grid,
+      .footer-grid,
+      .cards-3,
+      .cards-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy,
+      .hero-panel {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 860px) {
+      nav ul,
+      .nav-cta {
+        display: none;
+      }
+
+      .nav-shell {
+        border-radius: 24px;
+      }
+
+      h1 {
+        font-size: clamp(42px, 14vw, 70px);
+      }
+
+      .hero-copy,
+      .hero-panel,
+      .card,
+      .list-panel,
+      .demo-box,
+      .footer-panel {
+        padding: 20px;
+      }
+
+      .hero-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .stats-row,
+      .release-meta {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(calc(100% - 18px), var(--max));
+      }
+
+      .hero {
+        padding-top: 18px;
+      }
+
+      .hero-copy {
+        padding: 18px;
+      }
+
+      .hero-panel,
+      .card,
+      .list-panel,
+      .demo-box,
+      .footer-panel {
+        border-radius: 22px;
+      }
+
+      .showcase {
+        min-height: 320px;
+        padding: 18px;
+      }
+
+      .record {
+        width: 170px;
+        height: 170px;
+      }
+
+      .section {
+        padding-top: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="nav-shell glass">
+        <a href="#top" class="brand" aria-label="Incord, Ltd.">
+          <div class="brand-mark">IC</div>
+          <div class="brand-text">
+            <strong>Incord, Ltd.</strong>
+            <span>Independent Music Label</span>
+          </div>
+        </a>
+
+        <nav aria-label="Primary navigation">
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#artists">Artists</a></li>
+            <li><a href="#releases">Releases</a></li>
+            <li><a href="#demo">Demo</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <a class="nav-cta" href="#demo">Submit Demo</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-copy glass">
+            <div>
+              <div class="badge">Global Digital Distribution</div>
+              <p class="eyebrow">Built for modern releases</p>
+              <h1>Black glass design for a label with presence.</h1>
+              <p class="hero-desc">
+                Incord, Ltd. develops artists, shapes visual identity, and releases music with a focused, premium-first approach across trap, drill, melodic and experimental lanes.
+              </p>
+              <div class="hero-actions">
+                <a href="#releases" class="btn btn-primary">Explore Releases</a>
+                <a href="#artists" class="btn btn-secondary">View Artists</a>
+              </div>
+            </div>
+
+            <div class="hero-bottom">
+              <p class="mini-note">
+                Designed to feel minimal, cold, premium and modern — with glass surfaces, sharp typography and subtle motion-ready visual structure.
+              </p>
+              <div class="badge">Incord Est. 2026</div>
+            </div>
+          </div>
+
+          <aside class="hero-panel glass">
+            <div class="showcase">
+              <div class="showcase-top">
+                <div class="showcase-title">
+                  <small>Featured release</small>
+                  <h2>After Hours Vol. 01</h2>
+                </div>
+                <div class="showcase-chip">New Era</div>
+              </div>
+
+              <div class="vinyl-area">
+                <div class="record" aria-hidden="true"></div>
+              </div>
+
+              <div class="release-meta">
+                <div class="meta-box">
+                  <span class="meta-kicker">Artist</span>
+                  <strong>Your Lead Artist</strong>
+                </div>
+                <div class="meta-box">
+                  <span class="meta-kicker">Genre</span>
+                  <strong>Trap / Melodic</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="stats-row">
+              <div class="stat-card">
+                <span class="meta-kicker">Roster</span>
+                <strong>03</strong>
+                <p>Core artists under active development.</p>
+              </div>
+              <div class="stat-card">
+                <span class="meta-kicker">Releases</span>
+                <strong>12</strong>
+                <p>Singles, projects and visual campaigns.</p>
+              </div>
+              <div class="stat-card">
+                <span class="meta-kicker">Focus</span>
+                <strong>Global</strong>
+                <p>Distribution-ready sound and brand identity.</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">About Incord</span>
+            <h2>Independent structure. Premium execution.</h2>
+          </div>
+          <p>
+            Incord, Ltd. is positioned as a modern label platform where music, visuals and rollout strategy are treated as one system rather than separate pieces.
+          </p>
+        </div>
+
+        <div class="cards-3">
+          <article class="card glass">
+            <div class="card-top">
+              <div>
+                <span class="meta-kicker">01</span>
+                <h3>Artist development</h3>
+              </div>
+              <div class="index-chip">A&amp;R</div>
+            </div>
+            <p>
+              Focused positioning, release planning, sound direction and a cleaner brand identity for each artist profile.
+            </p>
+          </article>
+
+          <article class="card glass">
+            <div class="card-top">
+              <div>
+                <span class="meta-kicker">02</span>
+                <h3>Digital distribution</h3>
+              </div>
+              <div class="index-chip">DSP</div>
+            </div>
+            <p>
+              Structured rollout for Spotify, Apple Music, YouTube and other major platforms with consistent presentation.
+            </p>
+          </article>
+
+          <article class="card glass">
+            <div class="card-top">
+              <div>
+                <span class="meta-kicker">03</span>
+                <h3>Visual identity</h3>
+              </div>
+              <div class="index-chip">Brand</div>
+            </div>
+            <p>
+              Cohesive cover direction, campaign language and design systems that make every release look intentional.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="artists">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Artists</span>
+            <h2>Built around a clean roster system.</h2>
+          </div>
+          <p>
+            Replace the placeholders below with your real artist names, genres, streaming links and profile visuals.
+          </p>
+        </div>
+
+        <div class="cards-3">
+          <article class="card glass artist-card">
+            <div>
+              <div class="artist-avatar">A1</div>
+              <div class="artist-meta">
+                <span class="pill">Trap</span>
+                <span class="pill">Melodic</span>
+              </div>
+            </div>
+            <div>
+              <h3>Artist One</h3>
+              <p>
+                Atmospheric vocals, dark melodic production and a release identity centered on late-night visual language.
+              </p>
+            </div>
+          </article>
+
+          <article class="card glass artist-card">
+            <div>
+              <div class="artist-avatar">A2</div>
+              <div class="artist-meta">
+                <span class="pill">Drill</span>
+                <span class="pill">Dark</span>
+              </div>
+            </div>
+            <div>
+              <h3>Artist Two</h3>
+              <p>
+                Direct performance energy, minimal aesthetics and a colder, harder approach to rhythm and visuals.
+              </p>
+            </div>
+          </article>
+
+          <article class="card glass artist-card">
+            <div>
+              <div class="artist-avatar">A3</div>
+              <div class="artist-meta">
+                <span class="pill">Rage</span>
+                <span class="pill">Experimental</span>
+              </div>
+            </div>
+            <div>
+              <h3>Artist Three</h3>
+              <p>
+                Forward-leaning sound design, sharper textures and a more disruptive visual profile for standout drops.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="releases">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Releases</span>
+            <h2>Minimal cards with stronger detail.</h2>
+          </div>
+          <p>
+            These cards are made to hold track names, artist names, release years and external links while keeping the premium glass look.
+          </p>
+        </div>
+
+        <div class="cards-3">
+          <article class="card glass release-card">
+            <div>
+              <span class="meta-kicker">Single / 2026</span>
+              <h3>Midnight Signal</h3>
+              <p>
+                A cold, polished release entry with room for DSP links and campaign notes.
+              </p>
+            </div>
+            <div class="release-bottom">
+              <span>Artist One</span>
+              <a class="arrow-link" href="#">Spotify →</a>
+            </div>
+          </article>
+
+          <article class="card glass release-card">
+            <div>
+              <span class="meta-kicker">Project / 2026</span>
+              <h3>Blackroom Tapes</h3>
+              <p>
+                Ideal for EP or mixtape placements with a stronger editorial presentation.
+              </p>
+            </div>
+            <div class="release-bottom">
+              <span>Artist Two</span>
+              <a class="arrow-link" href="#">YouTube →</a>
+            </div>
+          </article>
+
+          <article class="card glass release-card">
+            <div>
+              <span class="meta-kicker">Visual / 2026</span>
+              <h3>Static Hearts</h3>
+              <p>
+                A clean slot for visual-first drops, performance videos or highlighted campaigns.
+              </p>
+            </div>
+            <div class="release-bottom">
+              <span>Artist Three</span>
+              <a class="arrow-link" href="#">Apple Music →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="demo">
+      <div class="container">
+        <div class="process-grid">
+          <div class="list-panel glass">
+            <span class="section-kicker">Demo Process</span>
+            <h2 style="font-size:clamp(30px,4vw,46px); line-height:1.02; letter-spacing:-0.04em; margin-top:10px;">Submission that feels structured and serious.</h2>
+            <ul class="timeline">
+              <li>
+                <div class="step">01</div>
+                <div>
+                  <strong>Send a private streaming link</strong>
+                  <p>Use an unlisted link for your best unreleased track or project preview.</p>
+                </div>
+              </li>
+              <li>
+                <div class="step">02</div>
+                <div>
+                  <strong>Add a short artist bio</strong>
+                  <p>Keep it compact: sound, influence, city and where you want to position your music.</p>
+                </div>
+              </li>
+              <li>
+                <div class="step">03</div>
+                <div>
+                  <strong>Include socials and previous work</strong>
+                  <p>Spotify, Instagram, YouTube or any visual references help define your current level.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <aside class="demo-box glass">
+            <div>
+              <span class="section-kicker">Contact</span>
+              <h3>Ready to send music to Incord?</h3>
+            </div>
+
+            <div class="demo-info">
+              <div class="demo-item">
+                <strong>Email</strong>
+                <p>demo@yourdomain.com</p>
+              </div>
+              <div class="demo-item">
+                <strong>Subject</strong>
+                <p>Demo Submission — Artist Name</p>
+              </div>
+              <div class="demo-item">
+                <strong>Recommended</strong>
+                <p>1 best track, short bio, social links, and mood references.</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section footer-wrap" id="contact">
+      <div class="container">
+        <footer class="footer-panel glass">
+          <div class="footer-grid">
+            <div>
+              <span class="section-kicker">Incord, Ltd.</span>
+              <h3>Independent music label with a premium digital face.</h3>
+              <p class="footer-note">
+                Built for GitHub Pages, modern browsers and fast first-version deployment with your custom domain.
+              </p>
+            </div>
+
+            <div>
+              <span class="section-kicker">Navigation</span>
+              <div class="footer-links" style="margin-top:14px;">
+                <a href="#about">About</a>
+                <a href="#artists">Artists</a>
+                <a href="#releases">Releases</a>
+                <a href="#demo">Demo</a>
+              </div>
+            </div>
+
+            <div>
+              <span class="section-kicker">Socials</span>
+              <div class="social-row" style="margin-top:14px;">
+                <a href="#">Instagram</a>
+                <a href="#">Spotify</a>
+                <a href="#">YouTube</a>
+                <a href="mailto:info@yourdomain.com">info@yourdomain.com</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="copyright">
+            <span>© 2026 Incord, Ltd. All rights reserved.</span>
+            <span>Black / Glass / Minimal / Premium</span>
+          </div>
+        </footer>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
